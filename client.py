@@ -43,7 +43,7 @@ def generate_client_fn(traindataset_list: List[Dataset], valdataset_list: List[D
             traindataset=traindataset_list[int(cid)],
             valdataset=valdataset_list[int(cid)],
             num_classes=num_classes,
-            weight_ratio=cfg["weight_attack_ratio"]
+            label_ratio=cfg["label_attack_ratio"]
         ).to_client()
 
 
@@ -55,7 +55,7 @@ def generate_client_fn(traindataset_list: List[Dataset], valdataset_list: List[D
 class FlowerClientMLP(fl.client.NumPyClient):
     """Define a Flower Client."""
 
-    def __init__(self, traindataset: Dataset, valdataset: Dataset, num_classes: int, weight_ratio: float) -> None:
+    def __init__(self, traindataset: Dataset, valdataset: Dataset, num_classes: int, label_ratio: float) -> None:
         super().__init__()
 
         # the dataloaders that point to the data associated to this client
@@ -71,7 +71,7 @@ class FlowerClientMLP(fl.client.NumPyClient):
             "cuda:0" if torch.cuda.is_available() else "cpu")
         self.attack_type = None
         self.is_malicious = False
-        self.weight_ratio=weight_ratio
+        self.label_ratio=label_ratio
 
     def set_parameters(self, parameters):
         """Receive parameters and apply them to the local model."""
@@ -85,7 +85,7 @@ class FlowerClientMLP(fl.client.NumPyClient):
         """Extract model parameters and return them as a list of numpy arrays."""
         state_dict = self.model.state_dict()
         if self.attack_type == "MPAF" and self.is_malicious:
-            state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+            state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.label_ratio)
         return [val.cpu().numpy() for _, val in state_dict.items()]
 
     def fit(self, parameters, config):
@@ -96,7 +96,7 @@ class FlowerClientMLP(fl.client.NumPyClient):
         # Poison the dataset if the client is malicious
         self.attack_type = config["attack_type"]
         self.is_malicious = config["is_malicious"]
-        self.traindataset = applyAttacks(trainset=self.traindataset, config=config)
+        self.traindataset = applyAttacks(trainset=self.traindataset, label_ratio=self.label_ratio, config=config)
 
         # copy parameters sent by the server into client's local model
         self.set_parameters(parameters)
@@ -149,9 +149,10 @@ class FlowerClientMLP(fl.client.NumPyClient):
                                              "confusion_matrix": conf_matrix}
 
 
-def applyAttacks(trainset: Dataset, config, model: str = None) -> Dataset:
+def applyAttacks(trainset: Dataset, config, label_ratio: float, model: str = None) -> Dataset:
     # NOTE: this attack ratio is different, This is for number of samples to attack.
     ## The one in the config file is to select number of malicious clients
+
 
     if config["attack_type"] == "TLF":
         if config["is_malicious"]:
@@ -170,7 +171,7 @@ def applyAttacks(trainset: Dataset, config, model: str = None) -> Dataset:
             return trainset
     else:
         if config["is_malicious"]:
-            print("----------------------------------Dataset Attacked------------------------------")
-            return label_flipping_attack(dataset=trainset, num_classes=10, attack_ratio=config["weight_attack_ratio"])
+            print("----------------------------------Dataset Attacked LF ------------------------------")
+            return label_flipping_attack(dataset=trainset, num_classes=10, attack_ratio=label_ratio)
 
     return trainset
