@@ -171,6 +171,6 @@ def applyAttacks(trainset: Dataset, config, model: str = None) -> Dataset:
     else:
         if config["is_malicious"]:
             print("----------------------------------Dataset Attacked------------------------------")
-            return label_flipping_attack(dataset=trainset, num_classes=10, attack_ratio=1.0)
+            return label_flipping_attack(dataset=trainset, num_classes=10, attack_ratio=config["weight_attack_ratio"])
 
     return trainset

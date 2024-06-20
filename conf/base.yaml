@@ -1,5 +1,5 @@
 attack_round: FULL
-attack_type: MPAF
+attack_type: LF
 config_fit:
   batch_size: 20
   local_epochs: 1
@@ -12,4 +12,4 @@ num_clients: 100
 num_clients_per_round_eval: 10
 num_clients_per_round_fit: 10
 num_rounds: 10
-weight_attack_ratio: 1
+weight_attack_ratio: 0
