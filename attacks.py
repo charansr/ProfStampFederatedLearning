@@ -16,17 +16,13 @@ def ratio_tensors_same(changing_tensor, reference_tensor, same_ratio: float):
     total_elements = torch.numel(changing_tensor)
     elements_to_change = int(same_ratio * total_elements)
     
-    # Flatten the tensors to make it easier to work with
     flat_changing_tensor = changing_tensor.flatten()
     flat_reference_tensor = reference_tensor.flatten()
     
-    # Get random indices to change
     indices_to_change = np.random.choice(total_elements, elements_to_change, replace=False)
     
-    # Change the elements in tensor1 to match tensor2 at the chosen indices
     flat_changing_tensor[indices_to_change] = flat_reference_tensor[indices_to_change]
     
-    # Reshape the modified flat tensor back to its original shape
     modified_tensor = flat_changing_tensor.reshape(changing_tensor.shape)
     
     return modified_tensor
