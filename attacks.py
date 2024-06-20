@@ -28,7 +28,6 @@ def ratio_tensors_same(changing_tensor, reference_tensor, same_ratio: float):
     return modified_tensor
 
 
-# Original dataset needs to be wrapped with this to apply further custom transforms
 
 
 class PoisonedDataSet(Dataset):
