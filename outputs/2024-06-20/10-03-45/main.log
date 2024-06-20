@@ -1,0 +1,2212 @@
+[2024-06-20 10:03:45,573][flwr][INFO] - Starting Flower simulation, config: num_rounds=10, no round_timeout
+[2024-06-20 10:03:47,683][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 8539758592.0, 'object_store_memory': 2147483648.0, 'node:__internal_head__': 1.0, 'CPU': 12.0, 'node:127.0.0.1': 1.0}
+[2024-06-20 10:03:47,683][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-06-20 10:03:47,683][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 2, 'num_gpus': 0}
+[2024-06-20 10:03:47,694][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 6 actors
+[2024-06-20 10:03:47,694][flwr][INFO] - [INIT]
+[2024-06-20 10:03:47,694][flwr][INFO] - Requesting initial parameters from one random client
+[2024-06-20 10:03:49,779][flwr][INFO] - Received initial parameters from one random client
+[2024-06-20 10:03:49,779][flwr][INFO] - Evaluating initial global parameters
+[2024-06-20 10:03:50,240][flwr][INFO] - initial parameters (loss, other metrics): 181.76928067207336, {'accuracy': 0.1086, 'precision': 0.12349967530374152, 'recall': 0.1086, 'f1': 0.03553137346181725, 'confusion_matrix': array([[   0,    8,    0,  956,    0,    1,    0,   15,    0,    0],
+       [   0,  122,    0, 1013,    0,    0,    0,    0,    0,    0],
+       [   0,   38,    0,  971,    0,    0,    3,   19,    1,    0],
+       [   0,   44,    0,  945,    1,    1,    0,   17,    2,    0],
+       [   0,  143,    0,  816,    1,    0,    2,   20,    0,    0],
+       [   0,  118,    0,  735,    1,    7,    0,   30,    1,    0],
+       [   0,  144,    0,  749,   25,    0,    2,   38,    0,    0],
+       [   0,  272,    0,  724,    8,    0,    0,    9,   15,    0],
+       [   0,   81,    0,  859,    1,    0,    1,   32,    0,    0],
+       [   0,  178,    0,  799,    1,    0,    0,   31,    0,    0]])}
+[2024-06-20 10:03:50,241][flwr][INFO] - 
+[2024-06-20 10:03:50,241][flwr][INFO] - [ROUND 1]
+[2024-06-20 10:03:50,241][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-06-20 10:03:52,626][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:52,630][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:55,525][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:55,526][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:55,567][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:55,568][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:55,569][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:55,569][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:55,571][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:55,571][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:55,635][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:55,635][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:55,727][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:55,727][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:57,547][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:57,547][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:57,548][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:57,548][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:57,560][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:03:57,560][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:03:57,560][flwr][INFO] - aggregate_fit: received 0 results and 10 failures
+[2024-06-20 10:03:58,007][flwr][INFO] - fit progress: (1, 181.76928067207336, {'accuracy': 0.1086, 'precision': 0.12349967530374152, 'recall': 0.1086, 'f1': 0.03553137346181725, 'confusion_matrix': array([[   0,    8,    0,  956,    0,    1,    0,   15,    0,    0],
+       [   0,  122,    0, 1013,    0,    0,    0,    0,    0,    0],
+       [   0,   38,    0,  971,    0,    0,    3,   19,    1,    0],
+       [   0,   44,    0,  945,    1,    1,    0,   17,    2,    0],
+       [   0,  143,    0,  816,    1,    0,    2,   20,    0,    0],
+       [   0,  118,    0,  735,    1,    7,    0,   30,    1,    0],
+       [   0,  144,    0,  749,   25,    0,    2,   38,    0,    0],
+       [   0,  272,    0,  724,    8,    0,    0,    9,   15,    0],
+       [   0,   81,    0,  859,    1,    0,    1,   32,    0,    0],
+       [   0,  178,    0,  799,    1,    0,    0,   31,    0,    0]])}, 7.766241208)
+[2024-06-20 10:03:58,007][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-20 10:03:58,008][flwr][INFO] - 
+[2024-06-20 10:03:58,008][flwr][INFO] - [ROUND 2]
+[2024-06-20 10:03:58,008][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-06-20 10:04:01,216][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:01,236][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:01,267][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:01,268][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:01,281][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:01,282][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:01,313][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:01,315][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:01,315][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:01,317][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:01,317][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:01,317][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:03,602][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:03,603][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:03,627][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:03,627][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:03,627][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:03,627][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:03,704][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:03,705][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:03,705][flwr][INFO] - aggregate_fit: received 0 results and 10 failures
+[2024-06-20 10:04:04,135][flwr][INFO] - fit progress: (2, 181.76928067207336, {'accuracy': 0.1086, 'precision': 0.12349967530374152, 'recall': 0.1086, 'f1': 0.03553137346181725, 'confusion_matrix': array([[   0,    8,    0,  956,    0,    1,    0,   15,    0,    0],
+       [   0,  122,    0, 1013,    0,    0,    0,    0,    0,    0],
+       [   0,   38,    0,  971,    0,    0,    3,   19,    1,    0],
+       [   0,   44,    0,  945,    1,    1,    0,   17,    2,    0],
+       [   0,  143,    0,  816,    1,    0,    2,   20,    0,    0],
+       [   0,  118,    0,  735,    1,    7,    0,   30,    1,    0],
+       [   0,  144,    0,  749,   25,    0,    2,   38,    0,    0],
+       [   0,  272,    0,  724,    8,    0,    0,    9,   15,    0],
+       [   0,   81,    0,  859,    1,    0,    1,   32,    0,    0],
+       [   0,  178,    0,  799,    1,    0,    0,   31,    0,    0]])}, 13.894556416)
+[2024-06-20 10:04:04,136][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-20 10:04:04,136][flwr][INFO] - 
+[2024-06-20 10:04:04,136][flwr][INFO] - [ROUND 3]
+[2024-06-20 10:04:04,136][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-06-20 10:04:09,243][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(4f1553897070d0e11df95a31b52a87a2ebee060501000000) was cancelled.
+
+[2024-06-20 10:04:09,259][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(4f1553897070d0e11df95a31b52a87a2ebee060501000000) was cancelled.
+[2024-06-20 10:04:09,299][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(e6790e982a043abcdf5e265c53846fc5a7dbfed401000000) was cancelled.
+
+[2024-06-20 10:04:09,311][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(e6790e982a043abcdf5e265c53846fc5a7dbfed401000000) was cancelled.
+[2024-06-20 10:04:09,319][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(f075e92c0236d75263c23b095f44f30bfd70ea9701000000) was cancelled.
+
+[2024-06-20 10:04:09,333][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(f075e92c0236d75263c23b095f44f30bfd70ea9701000000) was cancelled.
+[2024-06-20 10:04:09,341][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(a94236005850b4b1fa2b4856991b36653595745301000000) was cancelled.
+
+[2024-06-20 10:04:09,342][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(a94236005850b4b1fa2b4856991b36653595745301000000) was cancelled.
+[2024-06-20 10:04:09,344][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(8d148522c8ed000722449430da1b6d69056a90cb01000000) was cancelled.
+
+[2024-06-20 10:04:09,344][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(dc5c6ba19ff17fe33e641183bc0055adaee29a8f01000000) was cancelled.
+
+[2024-06-20 10:04:09,344][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95120, ip=127.0.0.1, actor_id=22449430da1b6d69056a90cb01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1179feb50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(8d148522c8ed000722449430da1b6d69056a90cb01000000) was cancelled.
+[2024-06-20 10:04:09,345][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95124, ip=127.0.0.1, actor_id=3e641183bc0055adaee29a8f01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10d93fa30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(dc5c6ba19ff17fe33e641183bc0055adaee29a8f01000000) was cancelled.
+[2024-06-20 10:04:11,658][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:11,659][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95125, ip=127.0.0.1, actor_id=1df95a31b52a87a2ebee060501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10a29fa90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:11,706][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:11,707][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95121, ip=127.0.0.1, actor_id=df5e265c53846fc5a7dbfed401000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x116b97a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:11,801][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:11,802][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95122, ip=127.0.0.1, actor_id=fa2b4856991b36653595745301000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x111bd7a00>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+[2024-06-20 10:04:11,802][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+[2024-06-20 10:04:11,802][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 139, in fit
+    return self.get_parameters({}), len(trainloader), {}
+  File "/Users/charansr/Stamp2024/client.py", line 88, in get_parameters
+    state_dict = controllable_mpaf_attack_nn(state_dict, self.device, self.weight_ratio)
+  File "/Users/charansr/Stamp2024/attacks.py", line 257, in controllable_mpaf_attack_nn
+    print("max diff: ",torch.max(tmp-mpaf))
+TypeError: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=95123, ip=127.0.0.1, actor_id=63c23b095f44f30bfd70ea9701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1183b3a90>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: unsupported operand type(s) for -: 'Tensor' and 'collections.OrderedDict'

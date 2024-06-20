@@ -1,0 +1,54 @@
+[2024-06-19 19:28:41,230][flwr][INFO] - Starting Flower simulation, config: num_rounds=10, no round_timeout
+[2024-06-19 19:28:43,452][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 9348790682.0, 'CPU': 12.0, 'node:127.0.0.1': 1.0, 'object_store_memory': 2147483648.0, 'node:__internal_head__': 1.0}
+[2024-06-19 19:28:43,452][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-06-19 19:28:43,452][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 2, 'num_gpus': 0}
+[2024-06-19 19:28:43,463][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 6 actors
+[2024-06-19 19:28:43,464][flwr][INFO] - [INIT]
+[2024-06-19 19:28:43,464][flwr][INFO] - Requesting initial parameters from one random client
+[2024-06-19 19:28:45,689][flwr][INFO] - Received initial parameters from one random client
+[2024-06-19 19:28:45,689][flwr][INFO] - Evaluating initial global parameters
+[2024-06-19 19:28:46,148][flwr][INFO] - initial parameters (loss, other metrics): 181.76928067207336, {'accuracy': 0.1086, 'precision': 0.12349967530374152, 'recall': 0.1086, 'f1': 0.03553137346181725, 'confusion_matrix': array([[   0,    8,    0,  956,    0,    1,    0,   15,    0,    0],
+       [   0,  122,    0, 1013,    0,    0,    0,    0,    0,    0],
+       [   0,   38,    0,  971,    0,    0,    3,   19,    1,    0],
+       [   0,   44,    0,  945,    1,    1,    0,   17,    2,    0],
+       [   0,  143,    0,  816,    1,    0,    2,   20,    0,    0],
+       [   0,  118,    0,  735,    1,    7,    0,   30,    1,    0],
+       [   0,  144,    0,  749,   25,    0,    2,   38,    0,    0],
+       [   0,  272,    0,  724,    8,    0,    0,    9,   15,    0],
+       [   0,   81,    0,  859,    1,    0,    1,   32,    0,    0],
+       [   0,  178,    0,  799,    1,    0,    0,   31,    0,    0]])}
+[2024-06-19 19:28:46,148][flwr][INFO] - 
+[2024-06-19 19:28:46,148][flwr][INFO] - [ROUND 1]
+[2024-06-19 19:28:46,149][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-06-19 19:28:53,509][flwr][INFO] - aggregate_fit: received 10 results and 0 failures
+[2024-06-19 19:28:53,517][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-06-19 19:28:53,953][flwr][INFO] - fit progress: (1, 220953.91015625, {'accuracy': 0.087, 'precision': 0.07051235605981394, 'recall': 0.087, 'f1': 0.06051446405435361, 'confusion_matrix': array([[ 81, 110, 132,   8,  35, 105, 506,   0,   1,   2],
+       [315, 113, 600,   1,  89,   2,  10,   0,   5,   0],
+       [143, 216, 221,  46,  56,   6, 322,   1,  18,   3],
+       [ 67,  96, 533,  33,  57,   8, 188,   0,  18,  10],
+       [105, 267, 116, 179,   5,   9, 283,   3,  10,   5],
+       [ 51, 103, 293,  67,  25,  42, 277,   0,  19,  15],
+       [111, 140, 231,  35,  40,   6, 360,   3,  21,  11],
+       [ 77, 152, 180, 224,  60,  22, 304,   0,   8,   1],
+       [129,  90, 275,  85,  34,   1, 346,   0,  14,   0],
+       [ 72, 225, 131, 113,  10,   9, 424,   1,  23,   1]])}, 7.804610042000002)
+[2024-06-19 19:28:53,954][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-19 19:28:53,954][flwr][INFO] - 
+[2024-06-19 19:28:53,954][flwr][INFO] - [ROUND 2]
+[2024-06-19 19:28:53,954][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-06-19 19:28:59,116][flwr][INFO] - aggregate_fit: received 10 results and 0 failures
+[2024-06-19 19:28:59,558][flwr][INFO] - fit progress: (2, 1194942.041015625, {'accuracy': 0.25, 'precision': 0.22970503431515513, 'recall': 0.25, 'f1': 0.20405235107337388, 'confusion_matrix': array([[247, 301, 151, 107,   0,  92,  32,  47,   0,   3],
+       [  0, 997,  25,   9,   1,  24,   3,  53,  10,  13],
+       [  8, 416, 105, 186,  10,  35, 179,  40,   1,  52],
+       [  8, 316,  86, 294,   2, 211,  19,  60,  11,   3],
+       [ 69, 411,  96,  82,   1,  77,  44, 148,  14,  40],
+       [  8, 289,  66, 144,   1, 270,  11,  93,   0,  10],
+       [ 49, 281,  37,  79,   9,  45, 237,  30,   6, 185],
+       [ 25, 509,  47,  13,   0,  91,  21, 304,   2,  16],
+       [ 14, 479,  69, 169,   1,  48,  85,  90,   7,  12],
+       [ 54, 481,  71,  30,   5,  83,  59, 183,   5,  38]])}, 13.409881167)
+[2024-06-19 19:28:59,559][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-19 19:28:59,559][flwr][INFO] - 
+[2024-06-19 19:28:59,559][flwr][INFO] - [ROUND 3]
+[2024-06-19 19:28:59,559][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-06-19 19:29:04,747][flwr][INFO] - aggregate_fit: received 10 results and 0 failures
