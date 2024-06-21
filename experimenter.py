@@ -13,23 +13,9 @@ def update_yaml(file_path, max_attack_ratio, label_attack_ratio):
 
 yaml_file = '/Users/charansr/Stamp2024/conf/base.yaml'
 
-"""for it_client_attack_ratio in [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]:
+for it_client_attack_ratio in [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]:
     print("client_attack_ratio:", it_client_attack_ratio)
-    for it_label_attack_ratio in [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]:
-        print("label_attack_ratio:", it_label_attack_ratio)
-
-        max_attack_ratio = it_client_attack_ratio 
-        label_attack_ratio = it_label_attack_ratio 
-
-        update_yaml(yaml_file, max_attack_ratio, label_attack_ratio)
-
-        result = subprocess.run(['python3', 'main.py'], capture_output=True, text=True)
-        
-        print(result.stdout)"""
-for it_client_attack_ratio in [1]:
-    print("client_attack_ratio:", it_client_attack_ratio)
-    for it_label_attack_ratio in [1]:
-        print("label_attack_ratio:", it_label_attack_ratio)
+    for it_label_attack_ratio in [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]:
 
         max_attack_ratio = it_client_attack_ratio 
         label_attack_ratio = it_label_attack_ratio 
