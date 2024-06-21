@@ -43,7 +43,7 @@ def generate_client_fn(traindataset_list: List[Dataset], valdataset_list: List[D
             traindataset=traindataset_list[int(cid)],
             valdataset=valdataset_list[int(cid)],
             num_classes=num_classes,
-            label_ratio=cfg["label_attack_ratio"]
+            flabel_ratio=cfg["label_attack_ratio"]
         ).to_client()
 
 
@@ -55,7 +55,7 @@ def generate_client_fn(traindataset_list: List[Dataset], valdataset_list: List[D
 class FlowerClientMLP(fl.client.NumPyClient):
     """Define a Flower Client."""
 
-    def __init__(self, traindataset: Dataset, valdataset: Dataset, num_classes: int, label_ratio: float) -> None:
+    def __init__(self, traindataset: Dataset, valdataset: Dataset, num_classes: int, flabel_ratio: float) -> None:
         super().__init__()
 
         # the dataloaders that point to the data associated to this client
@@ -71,7 +71,7 @@ class FlowerClientMLP(fl.client.NumPyClient):
             "cuda:0" if torch.cuda.is_available() else "cpu")
         self.attack_type = None
         self.is_malicious = False
-        self.label_ratio=label_ratio
+        self.olabel_ratio=flabel_ratio
 
     def set_parameters(self, parameters):
         """Receive parameters and apply them to the local model."""
@@ -96,7 +96,7 @@ class FlowerClientMLP(fl.client.NumPyClient):
         # Poison the dataset if the client is malicious
         self.attack_type = config["attack_type"]
         self.is_malicious = config["is_malicious"]
-        self.traindataset = applyAttacks(trainset=self.traindataset, label_ratio=self.label_ratio, config=config)
+        self.traindataset = applyAttacks(trainset=self.traindataset, label_ratio=self.olabel_ratio, config=config)
 
         # copy parameters sent by the server into client's local model
         self.set_parameters(parameters)
@@ -172,6 +172,7 @@ def applyAttacks(trainset: Dataset, config, label_ratio: float, model: str = Non
     else:
         if config["is_malicious"]:
             print("----------------------------------Dataset Attacked LF ------------------------------")
+            print("Ratio: ",label_ratio)
             return label_flipping_attack(dataset=trainset, num_classes=10, attack_ratio=label_ratio)
 
     return trainset

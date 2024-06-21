@@ -5,6 +5,7 @@ config_fit:
   local_epochs: 1
   lr: 0.003
 defence: false
+label_attack_ratio: 1
 max_attack_ratio: 1
 model: MLP
 num_classes: 10
@@ -12,4 +13,3 @@ num_clients: 100
 num_clients_per_round_eval: 10
 num_clients_per_round_fit: 10
 num_rounds: 10
-label_attack_ratio: 0
