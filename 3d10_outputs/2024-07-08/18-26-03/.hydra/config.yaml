@@ -5,8 +5,8 @@ config_fit:
   local_epochs: 1
   lr: 0.003
 defence: false
-label_attack_ratio: 1
-max_attack_ratio: 1
+label_attack_ratio: 0.1
+max_attack_ratio: 0.9
 model: MLP
 num_classes: 10
 num_clients: 10
