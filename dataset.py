@@ -14,6 +14,10 @@ def get_mnist(data_path: str = "./data"):
     trainset = MNIST(data_path, train=True, download=True, transform=tr)
     testset = MNIST(data_path, train=False, download=True, transform=tr)
 
+    # Slice the datasets to the desired number of elements
+    #trainset.data, trainset.targets = trainset.data[:59940], trainset.targets[:59940]
+    #testset.data, testset.targets = testset.data[:9990], testset.targets[:9990]
+
     return trainset, testset
 
 
@@ -37,6 +41,9 @@ def prepare_dataset(num_partitions: int, val_ratio: float = 0.1, attack_type: st
     # amount of training examples, each client having a different distribution over the labels (maybe even some
     # clients not having a single training example for certain classes). If you are curious, you can check online
     # for Dirichlet (LDA) or pathological dataset partitioning in FL. A place to start is: https://arxiv.org/abs/1909.06335
+    print(len(trainset))
+    print(len(partition_len))
+    print(len(testset))
     trainsets = random_split(trainset, partition_len, torch.Generator().manual_seed(2023))
 
     # create dataloaders with train+val support
