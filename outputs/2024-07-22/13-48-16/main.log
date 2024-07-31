@@ -1,0 +1,581 @@
+[2024-07-22 13:48:16,641][flwr][INFO] - Starting Flower simulation, config: num_rounds=10, no round_timeout
+[2024-07-22 13:48:17,424][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 9836014797.0, 'node:127.0.0.1': 1.0, 'object_store_memory': 2147483648.0, 'node:__internal_head__': 1.0, 'CPU': 12.0}
+[2024-07-22 13:48:17,424][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-07-22 13:48:17,424][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 2, 'num_gpus': 0}
+[2024-07-22 13:48:17,430][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 6 actors
+[2024-07-22 13:48:17,430][flwr][INFO] - [INIT]
+[2024-07-22 13:48:17,430][flwr][INFO] - Requesting initial parameters from one random client
+[2024-07-22 13:48:18,858][flwr][INFO] - Received initial parameters from one random client
+[2024-07-22 13:48:18,858][flwr][INFO] - Evaluating initial global parameters
+[2024-07-22 13:48:19,187][flwr][INFO] - initial parameters (loss, other metrics): 181.76928067207336, {'accuracy': 0.1086, 'precision': 0.12349967530374152, 'recall': 0.1086, 'f1': 0.03553137346181725, 'confusion_matrix': array([[   0,    8,    0,  956,    0,    1,    0,   15,    0,    0],
+       [   0,  122,    0, 1013,    0,    0,    0,    0,    0,    0],
+       [   0,   38,    0,  971,    0,    0,    3,   19,    1,    0],
+       [   0,   44,    0,  945,    1,    1,    0,   17,    2,    0],
+       [   0,  143,    0,  816,    1,    0,    2,   20,    0,    0],
+       [   0,  118,    0,  735,    1,    7,    0,   30,    1,    0],
+       [   0,  144,    0,  749,   25,    0,    2,   38,    0,    0],
+       [   0,  272,    0,  724,    8,    0,    0,    9,   15,    0],
+       [   0,   81,    0,  859,    1,    0,    1,   32,    0,    0],
+       [   0,  178,    0,  799,    1,    0,    0,   31,    0,    0]])}
+[2024-07-22 13:48:19,188][flwr][INFO] - 
+[2024-07-22 13:48:19,188][flwr][INFO] - [ROUND 1]
+[2024-07-22 13:48:19,188][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-07-22 13:48:24,650][flwr][INFO] - aggregate_fit: received 10 results and 0 failures
+[2024-07-22 13:48:24,655][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-07-22 13:48:24,985][flwr][INFO] - fit progress: (1, 71.07686132192612, {'accuracy': 0.732, 'precision': 0.7734088069351089, 'recall': 0.732, 'f1': 0.7270271425534492, 'confusion_matrix': array([[ 887,    0,   37,    6,    0,   12,   16,   15,    2,    5],
+       [   0, 1035,   47,    8,    0,    0,    1,   10,   26,    8],
+       [   8,    2,  911,   27,   10,    0,   12,   38,    7,   17],
+       [   4,    1,  117,  785,    1,   10,    1,   72,   11,    8],
+       [   0,    1,   14,    0,  369,    0,    8,   15,    1,  574],
+       [  17,    6,   68,  193,   55,  418,    7,   66,   25,   37],
+       [  13,    4,  129,    1,   23,   19,  753,    1,    2,   13],
+       [   0,    5,   23,    1,    6,    0,    0,  974,    1,   18],
+       [   8,    2,  100,  173,   11,   23,    2,   64,  472,  119],
+       [   5,    3,    6,    8,   10,    3,    1,  256,    1,  716]])}, 5.797218417)
+[2024-07-22 13:48:24,985][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-07-22 13:48:24,985][flwr][INFO] - 
+[2024-07-22 13:48:24,986][flwr][INFO] - [ROUND 2]
+[2024-07-22 13:48:24,986][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-07-22 13:48:29,776][flwr][INFO] - aggregate_fit: received 10 results and 0 failures
+[2024-07-22 13:48:30,112][flwr][INFO] - fit progress: (2, 32.91092613339424, {'accuracy': 0.8826, 'precision': 0.8833372184657775, 'recall': 0.8826, 'f1': 0.8823588940899896, 'confusion_matrix': array([[ 943,    0,    4,    5,    0,   11,   10,    2,    4,    1],
+       [   0, 1089,    8,    8,    1,    1,    3,    1,   24,    0],
+       [  12,    7,  885,   30,   21,    1,   19,   19,   24,   14],
+       [   4,    3,   30,  882,    0,   29,    1,   18,   32,   11],
+       [   0,    3,    5,    0,  860,    0,   13,    1,    4,   96],
+       [  17,    5,    9,   70,   28,  695,   14,   18,   24,   12],
+       [  22,    4,    5,    0,   26,   19,  877,    1,    4,    0],
+       [   2,   12,   27,    3,    8,    0,    0,  919,    8,   49],
+       [   6,    7,   17,   40,   21,   34,   11,    9,  786,   43],
+       [  10,    6,    3,    7,   36,    7,    1,   38,   11,  890]])}, 10.924685541999999)
+[2024-07-22 13:48:30,113][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-07-22 13:48:30,113][flwr][INFO] - 
+[2024-07-22 13:48:30,113][flwr][INFO] - [ROUND 3]
+[2024-07-22 13:48:30,113][flwr][INFO] - configure_fit: strategy sampled 10 clients (out of 100)
+[2024-07-22 13:48:31,295][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=47475, ip=127.0.0.1, actor_id=3f0b8a128dcb22bb9ab1d98001000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x108d57a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(7952147df834c8be3f0b8a128dcb22bb9ab1d98001000000) was cancelled.
+
+[2024-07-22 13:48:31,296][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=47475, ip=127.0.0.1, actor_id=3f0b8a128dcb22bb9ab1d98001000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x108d57a30>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(7952147df834c8be3f0b8a128dcb22bb9ab1d98001000000) was cancelled.
+[2024-07-22 13:48:31,299][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=47474, ip=127.0.0.1, actor_id=a3d9b164d5718e15fdc3845001000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1207ebb80>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(205d98c48f2ad9f0a3d9b164d5718e15fdc3845001000000) was cancelled.
+
+[2024-07-22 13:48:31,308][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=47474, ip=127.0.0.1, actor_id=a3d9b164d5718e15fdc3845001000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x1207ebb80>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(205d98c48f2ad9f0a3d9b164d5718e15fdc3845001000000) was cancelled.
+[2024-07-22 13:48:31,315][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=47472, ip=127.0.0.1, actor_id=0317f6ac1f1242cb6e2602e501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x106757b50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(ae503a79671cd9cb0317f6ac1f1242cb6e2602e501000000) was cancelled.
+
+[2024-07-22 13:48:31,326][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=47472, ip=127.0.0.1, actor_id=0317f6ac1f1242cb6e2602e501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x106757b50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(ae503a79671cd9cb0317f6ac1f1242cb6e2602e501000000) was cancelled.
+[2024-07-22 13:48:31,334][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=47473, ip=127.0.0.1, actor_id=3972ba0b40a04d7519d372dd01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10db97bb0>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(d1a01cc5099171353972ba0b40a04d7519d372dd01000000) was cancelled.
+
+[2024-07-22 13:48:31,335][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=47473, ip=127.0.0.1, actor_id=3972ba0b40a04d7519d372dd01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x10db97bb0>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(d1a01cc5099171353972ba0b40a04d7519d372dd01000000) was cancelled.
+[2024-07-22 13:48:31,336][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=47476, ip=127.0.0.1, actor_id=9239dbee623a2e7631ebce4a01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x117ba3b50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(a61c12c2f984a69a9239dbee623a2e7631ebce4a01000000) was cancelled.
+
+[2024-07-22 13:48:31,336][flwr][ERROR] - Traceback (most recent call last):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 2667, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/ray/_private/worker.py", line 864, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(TaskCancelledError): [36mray::ClientAppActor.run()[39m (pid=47471, ip=127.0.0.1, actor_id=420e38bcd40981fa64e3894601000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x113297b80>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(e1489d9b80008ba2420e38bcd40981fa64e3894601000000) was cancelled.
+
+[2024-07-22 13:48:31,337][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=47476, ip=127.0.0.1, actor_id=9239dbee623a2e7631ebce4a01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x117ba3b50>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(a61c12c2f984a69a9239dbee623a2e7631ebce4a01000000) was cancelled.
+[2024-07-22 13:48:31,337][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=47471, ip=127.0.0.1, actor_id=420e38bcd40981fa64e3894601000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x113297b80>)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 58, in run
+    out_message = app(message=message, context=context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/message_handler/message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/flwr/client/numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "/Users/charansr/Stamp2024/client.py", line 124, in fit
+    train(self.model, trainloader, optim, epochs, self.device)
+  File "/Users/charansr/Stamp2024/model.py", line 44, in train
+    for images, labels in trainloader:
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1329, in _next_data
+    idx, data = self._get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1295, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1133, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/opt/anaconda3/envs/flwr_env/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+ray.exceptions.TaskCancelledError: Task: TaskID(e1489d9b80008ba2420e38bcd40981fa64e3894601000000) was cancelled.

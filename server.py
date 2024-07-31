@@ -42,7 +42,7 @@ def get_on_fit_config(config: DictConfig, model_name: str):
     return fit_config_fn_mlp
 
 
-def get_evaluate_fn(num_classes: int, testset: Dataset, model_name: str):
+def get_evaluate_fn(num_classes: int, testset: Dataset, trainset:Dataset, model_name: str):
     """Define function for global evaluation on the server."""
 
     def evaluate_fn_mlp(server_round: int, parameters, config):
@@ -74,8 +74,11 @@ def get_evaluate_fn(num_classes: int, testset: Dataset, model_name: str):
         # set on the server side, therefore evaluating the global model can only be done by the clients. (see the comment
         # in main.py above the strategy definition for more details on this)
         testloader = DataLoader(testset, batch_size=128)
+        trainloader=DataLoader(trainset,batch_size=128)
         loss, accuracy, precision, recall, f1, conf_matrix = test(model, testloader, device)
 
+        trainloss, trainaccuracy, trainprecision, trainrecall, trainf1, trainconf_matrix = test(model, trainloader, device)
+        print("TRAIN ACCURACY: ", trainaccuracy)
         # Report the loss and any other metric (inside a dictionary). In this case
         # we report the global test accuracy.
         return loss, {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1,

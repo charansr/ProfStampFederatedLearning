@@ -28,6 +28,8 @@ def prepare_dataset(num_partitions: int, val_ratio: float = 0.1, attack_type: st
     # download MNIST in case it's not already in the system
     trainset, testset = get_mnist()
 
+    chart_train_set=trainset
+
     # split trainset into `num_partitions` trainsets (one per client)
     # figure out number of training examples per partition
     num_images = len(trainset) // num_partitions
@@ -63,7 +65,7 @@ def prepare_dataset(num_partitions: int, val_ratio: float = 0.1, attack_type: st
         traindatasets_new.append(for_train)
         valdatasets.append(for_val)
 
-    return traindatasets_new, valdatasets, testset
+    return traindatasets_new, valdatasets, testset, chart_train_set
 
 
 def get_data_numpy(dataloader: DataLoader) -> (np.ndarray, np.ndarray):

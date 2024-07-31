@@ -240,7 +240,7 @@ class MaliciousClientFedAvg(FedAvg):
 
         return parameters_aggregated, metrics_aggregated
 
-def get_custom_strategy(model: str, cfg: DictConfig, testdataset: Dataset):
+def get_custom_strategy(model: str, cfg: DictConfig, testdataset: Dataset, traindataset: Dataset):
 
     strategy = MaliciousClientFedAvg(  # fl.server.strategy.FedAvg(
         fraction_fit=0.0,
@@ -255,7 +255,7 @@ def get_custom_strategy(model: str, cfg: DictConfig, testdataset: Dataset):
         on_fit_config_fn=get_on_fit_config(
             cfg.config_fit, cfg.model
         ),  # a function to execute to obtain the configuration to send to the clients during fit()
-        evaluate_fn=get_evaluate_fn(cfg.num_classes, testdataset, cfg.model),
+        evaluate_fn=get_evaluate_fn(cfg.num_classes, testdataset, traindataset, cfg.model),
         max_attack_ratio=cfg.max_attack_ratio,
         attack_round=cfg.attack_round,
         attack_type=cfg.attack_type,

@@ -39,8 +39,12 @@ def main(cfg: DictConfig):
     # in our config -- but you can change this!) following a independent and identically distributed (IID)
     # sampling mechanism. This is arguably the simples way of partitioning data but it's a good fit
     # for this introductory tutorial.
-    traindatasets, valdatasets, testdataset = prepare_dataset(cfg.num_clients, attack_type=cfg.attack_type)
+    traindatasets, valdatasets, testdataset, chart_train_set = prepare_dataset(cfg.num_clients, attack_type=cfg.attack_type)
     
+    #print(type(chart_train_set))
+    #print(type(testdataset))
+
+
     # 3. Define your clients
     # Unlike in standard FL (e.g. see the quickstart-pytorch or quickstart-tensorflow examples in the Flower repo),
     # in simulation we don't want to manually launch clients. We delegate that to the VirtualClientEngine.
@@ -64,7 +68,7 @@ def main(cfg: DictConfig):
     #         num_clients = int(num_available_clients * self.fraction_fit)
     #         clients_to_do_fit = max(num_clients, self.min_fit_clients)
     # ```
-    strategy = get_custom_strategy(model=cfg.model, cfg=cfg, testdataset=testdataset)
+    strategy = get_custom_strategy(model=cfg.model, cfg=cfg, testdataset=testdataset,traindataset=chart_train_set)
 
     
     # 5. Start Simulation
